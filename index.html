@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haruko Inenaga — Graphic Design Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Beau+Rivage&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --magenta:#FF00C2;
+    --ink:#141414;
+    --paper:#FFFFFF;
+    --gray:#E7E7E7;
+    --gray-mid:#c9c9c9;
+    --orange:#FDAF17;
+    --cyan:#04BFEC;
+    --navy:#202A67;
+    --green:#428B3A;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{
+    font-family:'Archivo Black',sans-serif;
+    line-height:1.02;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .script{
+    font-family:'Beau Rivage',cursive;
+    color:var(--magenta);
+    font-weight:400;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid #ededed;
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-family:'Archivo Black',sans-serif;
+    font-size:15px;letter-spacing:0.02em;
+  }
+  .logo span{color:var(--magenta);}
+  nav.links{display:flex;gap:28px;align-items:center;}
+  nav.links a{
+    font-size:14px;font-weight:600;text-decoration:none;color:var(--ink);
+    opacity:0.75;transition:opacity .2s;
+  }
+  nav.links a:hover{opacity:1;}
+  .pill{
+    background:var(--ink);color:#fff;padding:9px 18px;border-radius:99px;
+    font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;
+    transition:background .2s;
+  }
+  .pill:hover{background:var(--magenta);}
+  .burger{display:none;background:none;border:none;font-size:22px;cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 20%, rgba(255,0,194,0.10), transparent 45%),
+      var(--gray);
+    padding:64px 0 0;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:end;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--magenta);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--magenta);}
+  .script-line{font-size:clamp(38px,6vw,72px);display:block;margin-bottom:2px;}
+  .hero h1{
+    font-size:clamp(46px,8.4vw,110px);
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--magenta);
+  }
+  .hero p.lead{
+    font-size:17px;line-height:1.75;max-width:520px;margin-top:26px;color:#333;
+  }
+  .hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:99px;font-weight:700;font-size:14px;
+    text-decoration:none;transition:transform .2s, box-shadow .2s;
+  }
+  .btn-primary{background:var(--magenta);color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,0,194,0.35);}
+  .btn-outline{border:2px solid var(--ink);color:var(--ink);}
+  .btn-outline:hover{transform:translateY(-2px);}
+
+  .hero-photo{
+    position:relative;
+    justify-self:end;
+    width:100%;max-width:360px;
+  }
+  .hero-photo .dots{
+    position:absolute;inset:14px -16px auto auto;
+    width:60%;height:60%;
+    background-image:radial-gradient(var(--magenta) 32%, transparent 33%);
+    background-size:9px 9px;
+    z-index:0;border-radius:14px;
+    opacity:0.55;
+  }
+  .hero-photo img{
+    position:relative;z-index:1;
+    border-radius:14px;
+    width:100%;
+    filter:grayscale(100%) contrast(1.05);
+  }
+  .hero-photo .tag{
+    position:absolute;z-index:2;bottom:-16px;left:-16px;
+    background:var(--ink);color:#fff;
+    font-family:'Archivo Black',sans-serif;
+    font-size:13px;padding:10px 16px;border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  }
+  .scroll-strip{
+    margin-top:56px;border-top:1px solid #d8d8d8;
+    overflow:hidden;white-space:nowrap;padding:16px 0;
+  }
+  .scroll-strip .track{
+    display:inline-block;animation:scroll 26s linear infinite;
+    font-family:'Archivo Black',sans-serif;font-size:15px;color:#b9b9b9;
+    letter-spacing:0.04em;
+  }
+  .scroll-strip .track span{margin:0 22px;}
+  .scroll-strip .track span.hl{color:var(--ink);}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- PROFILE ---------- */
+  .profile{padding:96px 0;}
+  .profile-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;}
+  .sec-title{
+    font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--magenta);margin-bottom:14px;display:block;
+  }
+  .profile h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:20px;}
+  .profile p{font-size:16.5px;line-height:1.85;color:#333;margin:0 0 16px;}
+  .contact-list{margin-top:28px;border-top:1px solid #eee;}
+  .contact-row{
+    display:flex;justify-content:space-between;padding:16px 0;
+    border-bottom:1px solid #eee;font-size:15px;
+  }
+  .contact-row .k{color:#999;font-weight:600;}
+  .contact-row a{font-weight:700;text-decoration:none;}
+  .contact-row a:hover{color:var(--magenta);}
+
+  /* ---------- SKILLS ---------- */
+  .skills{background:var(--magenta);color:#fff;padding:96px 0;}
+  .skills .sec-title{color:rgba(255,255,255,0.85);}
+  .skills h2{font-size:clamp(30px,4.4vw,52px);color:#fff;margin-bottom:56px;max-width:640px;}
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+  .skill-num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:96px;color:rgba(255,255,255,0.35);
+    -webkit-text-stroke:2px rgba(255,255,255,0.6);
+    line-height:1;margin-bottom:6px;
+  }
+  .skill-grid h3{font-size:22px;color:#fff;margin-bottom:14px;}
+  .skill-grid p{font-size:14.5px;line-height:1.7;color:rgba(255,255,255,0.88);margin:0;}
+
+  /* ---------- WORKS ---------- */
+  .works{padding:100px 0 40px;}
+  .works-head{max-width:640px;margin-bottom:70px;}
+  .works-head h2{font-size:clamp(32px,4.8vw,56px);}
+  .works-head p{font-size:16px;color:#666;margin-top:16px;line-height:1.7;}
+
+  .project{
+    padding:56px 0;border-top:1px solid #ececec;
+    display:grid;grid-template-columns:0.72fr 1.28fr;gap:52px;
+  }
+  .project:last-child{border-bottom:1px solid #ececec;}
+  .project-meta{position:sticky;top:90px;align-self:start;}
+  .chip{
+    display:inline-block;padding:5px 12px;border-radius:99px;
+    font-size:11.5px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;
+    color:#fff;margin-bottom:16px;
+  }
+  .project h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:14px;}
+  .project .blurb{font-size:15px;line-height:1.75;color:#444;margin-bottom:22px;}
+  .meta-table{border-top:1px solid #eee;}
+  .meta-table div{
+    display:flex;justify-content:space-between;gap:10px;
+    padding:10px 0;border-bottom:1px solid #eee;font-size:13px;
+  }
+  .meta-table .k{color:#999;font-weight:600;flex:0 0 84px;}
+  .meta-table .v{text-align:right;color:#222;font-weight:600;}
+
+  .gallery{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+  }
+  .gallery.single{grid-template-columns:1fr;}
+  .gallery img{
+    width:100%;border-radius:10px;border:1px solid #eee;
+    cursor:zoom-in;transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .gallery img:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.12);}
+  .gallery figure{margin:0;}
+  .gallery.span2{grid-column:1/-1;}
+
+  /* ---------- PDF ---------- */
+  .pdf-section{background:var(--gray);padding:90px 0;}
+  .pdf-head{max-width:680px;margin-bottom:32px;}
+  .pdf-head h2{font-size:clamp(28px,4vw,44px);}
+  .pdf-head p{font-size:15.5px;color:#555;margin-top:14px;line-height:1.7;}
+  .pdf-actions{display:flex;gap:14px;margin-bottom:28px;flex-wrap:wrap;}
+  details.pdf-embed summary{
+    list-style:none;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:14px;color:var(--ink);
+    padding:14px 24px;border:2px solid var(--ink);border-radius:99px;
+    transition:background .2s,color .2s;
+  }
+  details.pdf-embed summary::-webkit-details-marker{display:none;}
+  details.pdf-embed summary:hover{background:var(--ink);color:#fff;}
+  details.pdf-embed[open] summary{margin-bottom:24px;background:var(--ink);color:#fff;}
+  .pdf-frame-wrap{
+    border-radius:14px;overflow:hidden;border:1px solid #ddd;
+    box-shadow:0 20px 50px rgba(0,0,0,0.12);background:#fff;
+  }
+  .pdf-frame-wrap iframe{width:100%;height:78vh;border:none;display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#fff;padding:90px 0 40px;}
+  footer .sec-title{color:rgba(255,255,255,0.5);}
+  footer h2{font-size:clamp(32px,5.6vw,68px);margin-bottom:30px;}
+  footer h2 .script{font-size:0.55em;display:block;color:var(--magenta);}
+  .footer-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;}
+  .footer-links a{
+    font-size:16px;font-weight:700;text-decoration:none;
+    border-bottom:2px solid rgba(255,255,255,0.25);padding-bottom:4px;
+  }
+  .footer-links a:hover{border-color:var(--magenta);color:var(--magenta);}
+  .footer-bottom{
+    margin-top:70px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:12.5px;color:rgba(255,255,255,0.45);
+  }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(10,10,10,0.92);
+    display:none;align-items:center;justify-content:center;z-index:200;
+    padding:36px;cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%;max-height:100%;border-radius:8px;}
+  .lightbox-close{
+    position:absolute;top:22px;right:28px;color:#fff;font-size:28px;
+    background:none;border:none;cursor:pointer;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    nav.links{position:fixed;top:64px;left:0;right:0;background:#fff;
+      flex-direction:column;padding:20px 28px;border-bottom:1px solid #eee;
+      display:none;gap:16px;align-items:flex-start;}
+    nav.links.open{display:flex;}
+    .burger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{justify-self:start;margin-top:40px;max-width:280px;}
+    .profile-grid{grid-template-columns:1fr;gap:36px;}
+    .skill-grid{grid-template-columns:1fr;gap:44px;}
+    .project{grid-template-columns:1fr;gap:24px;}
+    .project-meta{position:static;}
+    .gallery{grid-template-columns:1fr;}
+    .pdf-frame-wrap iframe{height:60vh;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">HARUKO <span>INENAGA</span></div>
+    <button class="burger" id="burgerBtn" aria-label="menu">☰</button>
+    <nav class="links" id="navLinks">
+      <a href="#profile">Profile</a>
+      <a href="#skills">Skills</a>
+      <a href="#works">Works</a>
+      <a href="#pdf">PDF</a>
+      <a href="#contact">Contact</a>
+      <a class="pill" href="mailto:inekomerice.design@gmail.com">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">2022 — 2026 Design Portfolio</span>
+        <span class="script-line script">Hi, I'm Haruko!</span>
+        <h1>GRAPHIC<br><em>DESIGNER</em></h1>
+        <p class="lead">After starting out as a junior in-house designer at an international IT company, I'm now leading the design team at a company focused mainly on e-commerce. I'm an endlessly curious person who likes to bring a pinch of humor into my work — and I love a good conversation over a cup of coffee.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#works">View my work</a>
+          <a class="btn btn-outline" href="#contact">Say hello</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="dots"></div>
+        <img src="assets/profile.jpg" alt="Haruko Inenaga">
+        <div class="tag">Ps / Ai</div>
+      </div>
+    </div>
+    <div class="scroll-strip">
+      <div class="track">
+        <span class="hl">Brand Design</span><span>—</span>
+        <span class="hl">Art Direction</span><span>—</span>
+        <span class="hl">Packaging</span><span>—</span>
+        <span class="hl">Social Content</span><span>—</span>
+        <span class="hl">UI Banners</span><span>—</span>
+        <span class="hl">Editorial</span><span>—</span>
+        <span class="hl">Brand Design</span><span>—</span>
+        <span class="hl">Art Direction</span><span>—</span>
+        <span class="hl">Packaging</span><span>—</span>
+        <span class="hl">Social Content</span><span>—</span>
+        <span class="hl">UI Banners</span><span>—</span>
+        <span class="hl">Editorial</span><span>—</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="profile" id="profile">
+  <div class="wrap profile-grid">
+    <div>
+      <span class="sec-title">Profile</span>
+      <h2>A curious designer who leads with brand thinking.</h2>
+    </div>
+    <div>
+      <p>I began my career as a junior in-house designer at an international IT company, and now lead the design team at an e-commerce–focused business — running everything from brand identity to social content, packaging and campaign creative.</p>
+      <p>I like projects that mix strategy with craft: giving a brand a clear visual language, then following it all the way through to the packaging on a shelf or the banner in someone's feed. Endlessly curious, a little humorous, and always up for talking design over coffee.</p>
+      <div class="contact-list">
+        <div class="contact-row"><span class="k">Email</span><a href="mailto:inekomerice.design@gmail.com">inekomerice.design@gmail.com</a></div>
+        <div class="contact-row"><span class="k">Phone</span><a href="tel:+818052195671">+81 80 5219 5671</a></div>
+        <div class="contact-row"><span class="k">Tools</span><span>Adobe Illustrator · Photoshop</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="wrap">
+    <span class="sec-title">What I can do for you</span>
+    <h2>From brand foundations to the details that make it feel finished.</h2>
+    <div class="skill-grid">
+      <div>
+        <div class="skill-num">1</div>
+        <h3>Brand Design</h3>
+        <p>Building and developing brand identities — visual systems, tone of voice, and design guidelines across platforms — aligned with business goals and user experience.</p>
+      </div>
+      <div>
+        <div class="skill-num">2</div>
+        <h3>Art Direction</h3>
+        <p>Overseeing the entire creative process, from concept development to final output, while keeping everything aligned with brand identity and project goals.</p>
+      </div>
+      <div>
+        <div class="skill-num">3</div>
+        <h3>Management</h3>
+        <p>Managing cross-functional teams, supporting junior members, coordinating with external partners, and keeping projects on track with realistic scope and timelines.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="works" id="works">
+  <div class="wrap">
+    <div class="works-head">
+      <span class="sec-title">Selected Works · 2022–2026</span>
+      <h2>Works</h2>
+      <p>A selection of branding, packaging, editorial and digital projects — click any image to view it larger.</p>
+    </div>
+
+    <!-- 1 Studio Nugget -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--orange)">Branding</span>
+        <h3>Studio Nugget Branding</h3>
+        <p class="blurb">Corporate logo for a company in the IP / character-licensing business, created in collaboration with an artist from a welfare organisation that supports people with disabilities who aspire to work in the arts. I combined the artist's character mark with an original logotype for a meaningful collaboration logo, then directed the website and business card.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2025 Dec</span></div>
+          <div><span class="k">Role</span><span class="v">Logo, manual, web, card</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator</span></div>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure class="gallery span2"><img src="assets/page-05.jpg" alt="Studio Nugget logo design" loading="lazy"></figure>
+        <figure><img src="assets/page-06.jpg" alt="Studio Nugget visual identity manual" loading="lazy"></figure>
+        <figure><img src="assets/page-07.jpg" alt="Studio Nugget identity guidelines" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 2 Social Media -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--magenta)">Social / Content</span>
+        <h3>Social Media Visual Design</h3>
+        <p class="blurb">Instagram visual strategy for a diet-coffee brand — feed and story design, campaign creative, and an original mascot character. Teamed up with marketers on content direction, photo shoots and shooting, growing the account to 2,900+ followers in four months.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2025–ongoing</span></div>
+          <div><span class="k">Role</span><span class="v">Content, feed, character</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure class="gallery span2"><img src="assets/page-08.jpg" alt="Instagram feed design" loading="lazy"></figure>
+        <figure class="gallery span2"><img src="assets/page-09.jpg" alt="Instagram growth campaign" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 3 MATOWA -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--ink)">Branding / Packaging</span>
+        <h3>Deodorant Brand — MATOWA</h3>
+        <p class="blurb">Naming-led identity for a gender-neutral deodorant brand. "MATOWA" comes from the Japanese "matou" (to wrap oneself in) — the products act like a protective charm for people who struggle with body odor, boosting their "defense power." Designed for a fragrance-free, natural, ages 30–40 audience.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2025 Oct</span></div>
+          <div><span class="k">Role</span><span class="v">Logo, package design</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery single">
+        <figure><img src="assets/page-10.jpg" alt="MATOWA deodorant brand design" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 4 Yumemiru -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--navy)">Branding</span>
+        <h3>Yumemiru Corporate Logo</h3>
+        <p class="blurb">Corporate logo for Yumemiru, a supplements and healthcare brand. The target audience skewed older, but the client wanted to avoid a clinical "medical" look — so I built a friendly, approachable mark around a catchy motif that reflects the brand name, which means "to dream" in Japanese.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2025 Sep</span></div>
+          <div><span class="k">Role</span><span class="v">Logo, manual, stationery</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery single">
+        <figure><img src="assets/page-11.jpg" alt="Yumemiru corporate logo and stationery" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 5 In-house magazine -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--orange)">Editorial</span>
+        <h3>In-house Magazine</h3>
+        <p class="blurb">As design lead, I initiated and produced an in-house magazine as a communication platform to increase employee engagement and designer skill development — managing everything from planning and timelines to editorial structure and visual design.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2024 Dec – 2025 Mar</span></div>
+          <div><span class="k">Role</span><span class="v">Direction, visual design</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/page-12.jpg" alt="In-house magazine planning" loading="lazy"></figure>
+        <figure><img src="assets/page-13.jpg" alt="In-house magazine mock-ups" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 6 Other DTP -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:#8a8a8a">Print / DTP</span>
+        <h3>Other DTP Works</h3>
+        <p class="blurb">A mix of flyers, guidebooks, product booklets and event maps designed for retail and F&amp;B clients — quick-turnaround print work that still carries a considered layout and hierarchy.</p>
+        <div class="meta-table">
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery single">
+        <figure><img src="assets/page-14.jpg" alt="Other DTP print works" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 7 LP Ads -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--cyan)">Digital / LP</span>
+        <h3>LP Ads</h3>
+        <p class="blurb">Landing-page creative for new in-house products and campaign promotions. Since the pages are vertical-scroll, I always focus on visual rhythm through text contrast, a consistent tone and manner, and a clear hierarchy that keeps people engaged from top to bottom.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2025</span></div>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/page-15.jpg" alt="LP ad design, matcha latte" loading="lazy"></figure>
+        <figure><img src="assets/page-16.jpg" alt="LP ad design, caramel latte" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 8 UI Banners -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--cyan)">UI / Banner</span>
+        <h3>UI Banners</h3>
+        <p class="blurb">Banners that don't just look good, but perform — striking visuals that grab attention, well-structured layouts guided by clear visual hierarchy, and creative designs that stand out while following brand guidelines and consistency.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2024</span></div>
+          <div><span class="k">Tools</span><span class="v">Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery single">
+        <figure><img src="assets/page-17.jpg" alt="UI delivery app banners" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 9 Packaging Itolo -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--magenta)">Packaging</span>
+        <h3>Packaging — Health Care Brand</h3>
+        <p class="blurb">Three supplement packaging designs (Vitamin, Iron and Probiotic) for the e-commerce brand "Itolo." The client wanted a cohesive series look, so I developed multiple proposals from one unified concept, then worked with the agency to finalize direction — from product design to EC thumbnails and banner creative.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2025 Oct</span></div>
+          <div><span class="k">Role</span><span class="v">Logo, package, digital</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/page-18.jpg" alt="Itolo packaging design" loading="lazy"></figure>
+        <figure><img src="assets/page-19.jpg" alt="Itolo packaging first proofs" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 10 Flyer -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--green)">Print</span>
+        <h3>Flyer Design</h3>
+        <p class="blurb">Club and event flyers for a Tokyo nightlife series — bold type, layered texture and a distinct visual language kept consistent across dozens of one-off event announcements.</p>
+        <div class="meta-table">
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery single">
+        <figure><img src="assets/page-21.jpg" alt="Club and event flyer design" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- 11 Private -->
+    <div class="project">
+      <div class="project-meta">
+        <span class="chip" style="background:var(--green)">Concept / Packaging</span>
+        <h3>Private Works — "Drink! Meat!"</h3>
+        <p class="blurb">A speculative packaging competition entry for EARTH MART, a pavilion concept for Osaka Expo — seaweed and soymilk packaging built out from a focused color combination and material study.</p>
+        <div class="meta-table">
+          <div><span class="k">Period</span><span class="v">2024</span></div>
+          <div><span class="k">Tools</span><span class="v">Illustrator, Photoshop</span></div>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/page-22.jpg" alt="EARTH MART Osaka Expo packaging concept" loading="lazy"></figure>
+        <figure><img src="assets/page-23.jpg" alt="Drink Meat packaging mock-up" loading="lazy"></figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PDF -->
+<section class="pdf-section" id="pdf">
+  <div class="wrap">
+    <div class="pdf-head">
+      <span class="sec-title">Full Portfolio</span>
+      <h2>Prefer the original layout?</h2>
+      <p>Every project above is also laid out in the original PDF portfolio — open it right here in the browser, or download a copy to keep.</p>
+    </div>
+    <div class="pdf-actions">
+      <a class="btn btn-primary" href="assets/Haruko_Inenaga_Portfolio.pdf" download>Download PDF</a>
+      <a class="btn btn-outline" href="assets/Haruko_Inenaga_Portfolio.pdf" target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+    <details class="pdf-embed">
+      <summary>▸ View PDF on this page</summary>
+      <div class="pdf-frame-wrap">
+        <iframe src="assets/Haruko_Inenaga_Portfolio.pdf" title="Haruko Inenaga Portfolio PDF"></iframe>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <span class="sec-title">Contact</span>
+    <h2>Let's make<br><span class="script">something good</span> together.</h2>
+    <div class="footer-links">
+      <a href="mailto:inekomerice.design@gmail.com">inekomerice.design@gmail.com</a>
+      <a href="tel:+818052195671">+81 80 5219 5671</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2022–2026 Haruko Inenaga</span>
+      <span>Graphic Designer · Brand · Packaging · Digital</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // mobile nav
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+  function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
